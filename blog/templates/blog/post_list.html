@@ -1,22 +1,43 @@
 <html>
     <head>
-        <title>Django Girls blog</title>
+        <title>我的Django博客</title>
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <style type="text/css">
+            .header {
+                background-color: #f5f7fa;
+                padding: 20px 20px 30px;
+                text-align: center;
+            }
+            .blog {
+                padding: 30px 20px;
+                border-bottom: 1px solid #f2f2f2;
+            }
+            .blog:last-child {
+                border: none;
+            }
+            .footer {
+                background-color: #333;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+            }
+            .blog-text {
+                margin-top: 20px;
+            }
+        </style>
     </head>
     <body>
-        <div>
-            <h1><a href="">Django Girls Blog</a></h1>
-        </div>
 
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My first post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <div class="container-fluid header"><h1>我的Django博客</h1></div>
+        <div class="container blog-list">
+            {% for post in posts %}
+            <div class="blog">
+                <p class="lead">{{ post.title }}</p>
+                <p class="text-muted">Published: {{ post.published_date }}</p>
+                <p class="blog-text">{{ post.text|truncatewords:30 }}</p>
+            </div>
+            {% endfor %}
         </div>
-
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My second post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-        </div>
+        <div class="container-fluid footer">@2017 Coded by Elliot</div>
     </body>
 </html>
